@@ -7,8 +7,8 @@ namespace mvc.Controllers
 {
     public class PersonaController : Controller
     {
-        private UsuarioContext _context;
-        public PersonaController(UsuarioContext context)
+        private AplicationContext _context;
+        public PersonaController(AplicationContext context)
         {
             _context = context;
         }

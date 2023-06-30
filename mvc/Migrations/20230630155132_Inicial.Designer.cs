@@ -10,9 +10,9 @@ using mvc.Data;
 
 namespace mvc.Migrations
 {
-    [DbContext(typeof(UsuarioContext))]
-    [Migration("20230628223112_PrimeraMigracion")]
-    partial class PrimeraMigracion
+    [DbContext(typeof(AplicationContext))]
+    [Migration("20230630155132_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
