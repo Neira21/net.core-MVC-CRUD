@@ -8,29 +8,29 @@ using mvc.Models;
 namespace mvc.Controllers
 {
     [ApiController]
-    [Route("api/generos")]
-    public class GeneroController : ControllerBase
+    [Route("api/actores")]
+    public class ActorController : ControllerBase
     {
         private readonly AplicationContext _context;
         private readonly IMapper _mapper;
-        public GeneroController(AplicationContext context, IMapper mapper)
+        public ActorController(AplicationContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post (GeneroCreacionDTO generoCreacion){
-            var genero = _mapper.Map<Genero>(generoCreacion);
-            _context.Add(genero);
+        public async Task<ActionResult> Post (ActorCreacionDTO ActorCreacion){
+            var actor = _mapper.Map<Actor>(ActorCreacion);
+            _context.Add(actor);
             await _context.SaveChangesAsync();
             return Ok();
         }
         
         [HttpPost("varios")]
-        public async Task<ActionResult> Post (GeneroCreacionDTO[] generosCreacionDTO){
-            var generos = _mapper.Map<Genero[]>(generosCreacionDTO);
-            _context.AddRange(generos);
+        public async Task<ActionResult> Post (ActorCreacionDTO[] actoresCreacionDTO){
+            var actores = _mapper.Map<Genero[]>(actoresCreacionDTO);
+            _context.AddRange(actores);
             await _context.SaveChangesAsync();
             return Ok();
         }

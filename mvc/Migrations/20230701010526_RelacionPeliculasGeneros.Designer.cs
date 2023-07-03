@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvc.Data;
 
@@ -11,9 +12,11 @@ using mvc.Data;
 namespace mvc.Migrations
 {
     [DbContext(typeof(AplicationContext))]
-    partial class AplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230701010526_RelacionPeliculasGeneros")]
+    partial class RelacionPeliculasGeneros
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,12 @@ namespace mvc.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int?>("PeliculaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PeliculaId");
 
                     b.ToTable("Actores");
                 });
@@ -132,29 +140,6 @@ namespace mvc.Migrations
                     b.ToTable("Peliculas");
                 });
 
-            modelBuilder.Entity("mvc.Models.PeliculaActor", b =>
-                {
-                    b.Property<int>("ActorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PeliculaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Orden")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Personaje")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("ActorId", "PeliculaId");
-
-                    b.HasIndex("PeliculaId");
-
-                    b.ToTable("PeliculasActores");
-                });
-
             modelBuilder.Entity("mvc.Models.Persona", b =>
                 {
                     b.Property<int>("Id")
@@ -208,6 +193,13 @@ namespace mvc.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("mvc.Models.Actor", b =>
+                {
+                    b.HasOne("mvc.Models.Pelicula", null)
+                        .WithMany("Actores")
+                        .HasForeignKey("PeliculaId");
+                });
+
             modelBuilder.Entity("mvc.Models.Comentario", b =>
                 {
                     b.HasOne("mvc.Models.Pelicula", "Pelicula")
@@ -219,35 +211,11 @@ namespace mvc.Migrations
                     b.Navigation("Pelicula");
                 });
 
-            modelBuilder.Entity("mvc.Models.PeliculaActor", b =>
-                {
-                    b.HasOne("mvc.Models.Actor", "Actor")
-                        .WithMany("PeliculaActores")
-                        .HasForeignKey("ActorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("mvc.Models.Pelicula", "Pelicula")
-                        .WithMany("PeliculaActores")
-                        .HasForeignKey("PeliculaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Actor");
-
-                    b.Navigation("Pelicula");
-                });
-
-            modelBuilder.Entity("mvc.Models.Actor", b =>
-                {
-                    b.Navigation("PeliculaActores");
-                });
-
             modelBuilder.Entity("mvc.Models.Pelicula", b =>
                 {
-                    b.Navigation("Comentarios");
+                    b.Navigation("Actores");
 
-                    b.Navigation("PeliculaActores");
+                    b.Navigation("Comentarios");
                 });
 #pragma warning restore 612, 618
         }

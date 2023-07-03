@@ -7,5 +7,7 @@ namespace mvc.Models
         public decimal Fortuna { get; set; }
         public DateTime FechaNacimiento { get; set; }
 
+        public List<PeliculaActor> PeliculaActores { get; set; } = new List<PeliculaActor>();
+
     }
 }
