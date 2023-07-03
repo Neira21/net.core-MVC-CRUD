@@ -26,14 +26,6 @@ namespace mvc.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
-        
-        [HttpPost("varios")]
-        public async Task<ActionResult> Post (ActorCreacionDTO[] actoresCreacionDTO){
-            var actores = _mapper.Map<Genero[]>(actoresCreacionDTO);
-            _context.AddRange(actores);
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
 
     }
 }
