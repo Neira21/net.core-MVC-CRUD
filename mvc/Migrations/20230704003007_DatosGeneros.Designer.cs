@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvc.Data;
 
@@ -11,9 +12,11 @@ using mvc.Data;
 namespace mvc.Migrations
 {
     [DbContext(typeof(AplicationContext))]
-    partial class AplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230704003007_DatosGeneros")]
+    partial class DatosGeneros
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,23 +38,6 @@ namespace mvc.Migrations
                     b.HasIndex("PeliculasId");
 
                     b.ToTable("GeneroPelicula");
-
-                    b.HasData(
-                        new
-                        {
-                            GenerosId = 5,
-                            PeliculasId = 6
-                        },
-                        new
-                        {
-                            GenerosId = 5,
-                            PeliculasId = 7
-                        },
-                        new
-                        {
-                            GenerosId = 6,
-                            PeliculasId = 8
-                        });
                 });
 
             modelBuilder.Entity("mvc.Models.Actor", b =>
@@ -77,22 +63,6 @@ namespace mvc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Actores");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 3,
-                            FechaNacimiento = new DateTime(1948, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fortuna = 300000000m,
-                            Nombre = "Samuel L. Jackson"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            FechaNacimiento = new DateTime(1965, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Fortuna = 5000000m,
-                            Nombre = "Robert Downey Jr."
-                        });
                 });
 
             modelBuilder.Entity("mvc.Models.Comentario", b =>
@@ -118,36 +88,6 @@ namespace mvc.Migrations
                     b.HasIndex("PeliculaId");
 
                     b.ToTable("Comentarios");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Contenido = "Excelente Película",
-                            PeliculaId = 6,
-                            Recomendar = true
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Contenido = "No me gustó",
-                            PeliculaId = 6,
-                            Recomendar = false
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Contenido = "Muy buena Película, JAJAJA",
-                            PeliculaId = 7,
-                            Recomendar = true
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Contenido = "No debieron traer startalents a la película, horrible doblaje",
-                            PeliculaId = 8,
-                            Recomendar = false
-                        });
                 });
 
             modelBuilder.Entity("mvc.Models.Genero", b =>
@@ -205,32 +145,6 @@ namespace mvc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Peliculas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 6,
-                            Duracion = 0,
-                            EnCines = false,
-                            FechaEstreno = new DateTime(2017, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Titulo = "Avengers: Endgame"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Duracion = 0,
-                            EnCines = false,
-                            FechaEstreno = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Titulo = "Spiderman: No Way Hom"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Duracion = 0,
-                            EnCines = false,
-                            FechaEstreno = new DateTime(2019, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Titulo = "Spiderman SpiderVerse 2"
-                        });
                 });
 
             modelBuilder.Entity("mvc.Models.PeliculaActor", b =>
@@ -254,29 +168,6 @@ namespace mvc.Migrations
                     b.HasIndex("PeliculaId");
 
                     b.ToTable("PeliculasActores");
-
-                    b.HasData(
-                        new
-                        {
-                            ActorId = 3,
-                            PeliculaId = 7,
-                            Orden = 1,
-                            Personaje = "Nick Fury"
-                        },
-                        new
-                        {
-                            ActorId = 3,
-                            PeliculaId = 6,
-                            Orden = 2,
-                            Personaje = "Nick Fury"
-                        },
-                        new
-                        {
-                            ActorId = 4,
-                            PeliculaId = 6,
-                            Orden = 1,
-                            Personaje = "Iron Man"
-                        });
                 });
 
             modelBuilder.Entity("mvc.Models.Persona", b =>
