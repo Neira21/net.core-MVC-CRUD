@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using mvc.Data;
 using mvc.DTOs;
 using mvc.Models;
@@ -17,6 +18,11 @@ namespace mvc.Controllers
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Genero>>> Get(){
+            return await _context.Generos.ToListAsync();
         }
 
         [HttpPost]
