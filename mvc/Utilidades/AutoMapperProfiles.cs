@@ -9,9 +9,12 @@ namespace mvc.Utilidades{
         {
             CreateMap<GeneroCreacionDTO, Genero>();
             
-            CreateMap<ActorCreacionDTO, Actor>();
 
+            CreateMap<ActorCreacionDTO, Actor>();
+            
             CreateMap<ComentarioCreacionDTO, Comentario>();
+            
+            CreateMap<Actor, ActorDTO>();
             
             CreateMap<PeliculaCreacionDTO, Pelicula>()
                 .ForMember(ent => ent.Generos, dto => 

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mvc.Data;
@@ -60,10 +61,11 @@ namespace mvc.Controllers
         }
 
         [HttpGet("idynombre")]
-        public async Task<ActionResult<Actor>> Getidynombre(){
+        public async Task<ActionResult<IEnumerable<ActorDTO>>> Getidynombre(){
             //version2 : Contiene
-            var actores = await _context.Actores.Select(a=> new {a.Id, a.Nombre}).ToListAsync();
-            return Ok(actores);
+            return await _context.Actores
+                .ProjectTo<ActorDTO>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         [HttpPost]

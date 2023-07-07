@@ -10,6 +10,8 @@ namespace mvc.Models
             var cienciaFiccion = new Genero(){Id = 5, Nombre = "Ciencia Ficción"};
             var animacion = new Genero(){Id = 6, Nombre = "Animación"};
             builder.HasData(cienciaFiccion, animacion);
+
+            builder.HasIndex(p=>p.Nombre).IsUnique();
             
         }
     }
