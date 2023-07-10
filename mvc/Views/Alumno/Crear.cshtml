@@ -1,0 +1,62 @@
+@model mvc.Models.Alumno
+
+@{
+    ViewData["Title"] = "Lista de Alumnos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista de Alumnos</h1>
+    <p>Lista de Alumnos</p>
+</div>
+
+<div class="row">
+    
+    <div class="col-3 mb-3">
+        <a class="btn btn-primary">Crear un nuevo alumno</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3 class="text-black"> <strong>Lista de Personas</strong> </h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <form asp-action="Crear">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <input asp-for="Nombre" class="form-control">
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Usuario" class="control-label"></label>
+                            <input asp-for="Usuario" class="form-control">
+                            <span asp-validation-for="Usuario" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Contraseña" class="control-label"></label>
+                            <input asp-for="Contraseña" class="form-control">
+                            <span asp-validation-for="Contraseña" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Crear Usuario"/>   
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista</a>
+</div>

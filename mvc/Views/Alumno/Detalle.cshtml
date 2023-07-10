@@ -1,0 +1,35 @@
+@model mvc.Models.Alumno
+
+@{
+    ViewData["Title"] = "Detalles del Alumno";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Detalles</h1>
+    <p>Datos del Alumno</p>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3 class="text-black"> <strong>Datos del Alumno</strong> </h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <ul>
+                        <li>@Html.DisplayFor(model => model.Id)</li>
+                        <li>@Html.DisplayFor(model => model.Nombre)</li>
+                        <li>@Html.DisplayFor(model => model.Usuario)</li>
+                        <li>@Html.DisplayFor(model => model.Email)</li>
+                        <li>@Html.DisplayFor(model => model.Contraseña)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="/Alumno/Index" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
+    
+</div>

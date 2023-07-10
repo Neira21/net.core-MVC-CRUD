@@ -1,11 +1,69 @@
 ﻿@model IEnumerable<mvc.Models.Persona>
 
+@{
+    ViewData["Title"] = "Lista de Personas";
+}
+
+
 <div class="text-center">
-    <h1 class="display-4">Lista de Personas</h1>
+    <h1 class="text-center display-4">Lista de Personas con .NET 7 (.NET Core MVC)</h1>
 </div>
-<p>
-    <a asp-action="Create">Crear nuevo</a>
-</p>
+
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Create" class="btn btn-secondary d-block mx-auto btn-lg">Crear nuevo usuario</a>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"> <strong>Lista de Personas</strong> </h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if(Model.Count()>0){
+                        <table class="table table-bordered" id="tbPersonas" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Apellidos)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Mensaje)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Mensaje)</td>
+                                        <td><a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }else{
+                        <div class="alert alert-info">
+                            <strong>No hay registros</strong>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>

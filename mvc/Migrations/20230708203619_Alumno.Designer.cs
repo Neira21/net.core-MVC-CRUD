@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvc.Data;
 
@@ -11,9 +12,11 @@ using mvc.Data;
 namespace mvc.Migrations
 {
     [DbContext(typeof(AplicationContext))]
-    partial class AplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230708203619_Alumno")]
+    partial class Alumno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace mvc.Migrations
 
                     b.HasIndex("PeliculasId");
 
-                    b.ToTable("GeneroPelicula", (string)null);
+                    b.ToTable("GeneroPelicula");
 
                     b.HasData(
                         new
@@ -76,7 +79,7 @@ namespace mvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actores", (string)null);
+                    b.ToTable("Actores");
 
                     b.HasData(
                         new
@@ -125,7 +128,7 @@ namespace mvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Alumnos", (string)null);
+                    b.ToTable("Alumnos");
                 });
 
             modelBuilder.Entity("mvc.Models.Comentario", b =>
@@ -150,7 +153,7 @@ namespace mvc.Migrations
 
                     b.HasIndex("PeliculaId");
 
-                    b.ToTable("Comentarios", (string)null);
+                    b.ToTable("Comentarios");
 
                     b.HasData(
                         new
@@ -201,7 +204,7 @@ namespace mvc.Migrations
                     b.HasIndex("Nombre")
                         .IsUnique();
 
-                    b.ToTable("Generos", (string)null);
+                    b.ToTable("Generos");
 
                     b.HasData(
                         new
@@ -240,7 +243,7 @@ namespace mvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Peliculas", (string)null);
+                    b.ToTable("Peliculas");
 
                     b.HasData(
                         new
@@ -289,7 +292,7 @@ namespace mvc.Migrations
 
                     b.HasIndex("PeliculaId");
 
-                    b.ToTable("PeliculasActores", (string)null);
+                    b.ToTable("PeliculasActores");
 
                     b.HasData(
                         new
@@ -350,7 +353,7 @@ namespace mvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Personas", (string)null);
+                    b.ToTable("Personas");
                 });
 
             modelBuilder.Entity("GeneroPelicula", b =>

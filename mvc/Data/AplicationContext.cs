@@ -30,6 +30,7 @@ namespace mvc.Data
         public DbSet<Comentario> Comentarios { get; set; } = null!;
         public DbSet<PeliculaActor> PeliculasActores => Set<PeliculaActor>();
 
+        public DbSet<Alumno> Alumnos { get; set; } = null!;
 
 
     }
