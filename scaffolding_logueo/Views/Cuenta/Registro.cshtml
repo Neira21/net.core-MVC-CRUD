@@ -1,0 +1,33 @@
+<div class="row text-center">
+
+    <div class="col-4" style="margin-top: 20px; margin-bottom: 20px;">
+        <img src="/imagenes/logoColegio.png" width="50%" height="auto" alt="login">
+    </div>
+    <div class="col-8">
+        <h1 style="text-align: center;">Formulario de Registro</h1>
+        <form method="POST">
+            <div asp-validation-summary="All"></div>
+            
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input class="form-control" placeholder="Usuario" name="usuario"/>
+            </div>  
+            <div class="form-group">
+                <label>Correo:</label>
+                <input class="form-control" placeholder="Correo Electronico" name="correo"/>
+            </div>
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input class="form-control" type="password" id="pwd" name="password" placeholder="Contraseña">
+            </div>
+            <div class="form-group">
+                <label>Confirmar Contraseña:</label>
+                <input class="form-control" type="password" id="pwd" name="password2" placeholder="Contraseña">
+            </div>
+            <div class="text-center mt-4"  >
+                <input type="submit" class="btn btn-primary" value="Registrar nuevo usuario">
+        </form>
+            <input type="submit" class="btn btn-danger" value="Volver">
+            </div>
+    </div>
+</div>

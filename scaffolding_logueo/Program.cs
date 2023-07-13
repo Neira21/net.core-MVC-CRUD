@@ -1,15 +1,18 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using scaffolding_logueo.Models;
+using scaffolding_logueo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<BdNotaFhpaContext>(options =>
+builder.Services.AddDbContext<LogueoContext>(options =>
     options.UseSqlServer("name=DefaultConnection")
 );
 
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<LogueoContext>();
 
 var app = builder.Build();
 
