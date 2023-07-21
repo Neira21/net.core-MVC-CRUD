@@ -31,5 +31,23 @@ namespace webapi.Controllers
                 }
             };
         }
+
+        [HttpPost]
+        [Route("AgregarProducto")]
+        public dynamic Agregar_Producto(Producto producto){
+            List<Parametro> parametros = new List<Parametro>
+            {
+                new Parametro("@IDCategoria", producto.IDCategoria),
+                new Parametro("@Nombre" , producto.Nombre),
+                new Parametro("@Precio" , producto.Precio),
+            };
+            bool exito = DBDatos.Ejecutar("Producto_Agregar", parametros);
+            return new {
+                success = true,
+                mensaje = exito ? "exito" : "error al guardar",
+                result = ""
+            };
+        }
+
     }
 }
